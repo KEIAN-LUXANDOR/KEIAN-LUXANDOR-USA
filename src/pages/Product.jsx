@@ -1,6 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getCollectionTitle, getProductById, getProductsForSlug } from '../data/products';
+import { getCollectionTitle, getProductById } from '../data/products';
+import { fetchProduct, fetchProducts } from '../api/products';
+import useFetch from '../hooks/useFetch';
 import { formatPrice } from '../config/site';
 import { useShop } from '../context/ShopContext';
 import { useUI } from '../context/UIContext';
@@ -17,7 +19,6 @@ const METAL_SWATCHES = [
   { name: '14K Rose Gold', color: '#e2a98f' },
   { name: 'Platinum', color: '#d6d8db' },
 ];
-const VIEWS = ['front', 'side', 'detail', 'worn'];
 
 function Accordion({ title, children, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -32,28 +33,58 @@ function Accordion({ title, children, defaultOpen = false }) {
   );
 }
 
-// Keyed by id so selections reset when moving between products.
+// Old demo ids look like "rings--0" (still used by the search box).
+// Real ids from the database are numbers like "1", "2", "3".
+const loadProduct = (id) =>
+  id.includes('--') ? Promise.resolve(getProductById(id)) : fetchProduct(id);
+
 export default function Product() {
   const { id } = useParams();
-  return <ProductView key={id} id={id} />;
+  return <ProductLoader key={id} id={id} />;
 }
 
-function ProductView({ id }) {
-  const product = getProductById(id);
+// Step 1: load the product from the backend (GET /api/products/{id}).
+function ProductLoader({ id }) {
+  const { data: product, loading, error } = useFetch(() => loadProduct(id), id);
+
+  if (loading) {
+    return (
+      <section className="section container empty-state">
+        <p className="muted">Loading…</p>
+      </section>
+    );
+  }
+  if ((error && error.message === 'not-found') || (!error && !product)) return <NotFound />;
+  if (error) {
+    return (
+      <section className="section container empty-state">
+        <p className="serif">We couldn’t load this product.</p>
+        <p className="muted">Check that the Spring Boot backend is running on port 8080.</p>
+      </section>
+    );
+  }
+  return <ProductView product={product} />;
+}
+
+// Step 2: show the product.
+function ProductView({ product }) {
   const { addToCart, toggleWishlist, isWishlisted } = useShop();
   const { open, showToast } = useUI();
   const [view, setView] = useState(0);
-  const [metal, setMetal] = useState(product?.metal);
+  const [metal, setMetal] = useState(product.metal);
   const [size, setSize] = useState(null);
   const [qty, setQty] = useState(1);
   const [sizeError, setSizeError] = useState(false);
 
-  const related = useMemo(
-    () => (product ? getProductsForSlug(product.collection, 24).filter((p) => p.id !== product.id).slice(0, 4) : []),
-    [product],
+  // "You May Also Like": other products from the same collection.
+  const { data: sameCollection } = useFetch(
+    () => (product.id.includes('--') ? Promise.resolve([]) : fetchProducts(product.collection)),
+    product.collection,
   );
+  const related = (sameCollection || []).filter((p) => p.id !== product.id).slice(0, 4);
 
-  if (!product) return <NotFound />;
+  // Photo gallery: real photos if the product has them, otherwise 4 placeholder views.
+  const gallery = product.images.length > 0 ? product.images : ['', '', '', ''];
 
   const isRing = /ring|band/i.test(product.type);
   const saved = isWishlisted(product.id);
@@ -78,14 +109,21 @@ function ProductView({ id }) {
         {/* Gallery */}
         <div className="pdp__gallery">
           <div className="pdp__thumbs">
-            {VIEWS.map((v, i) => (
-              <button key={v} className={i === view ? 'is-active' : ''} onClick={() => setView(i)} aria-label={`View ${v}`}>
-                <Media tone={product.tone} label={i === 3 ? 'sparkle' : product.type} />
+            {gallery.map((src, i) => (
+              <button key={i} className={i === view ? 'is-active' : ''} onClick={() => setView(i)} aria-label={`View photo ${i + 1}`}>
+                <Media src={src} tone={product.tone} label={i === 3 && !src ? 'sparkle' : product.type} alt="" />
               </button>
             ))}
           </div>
           <div className="pdp__main">
-            <Media tone={product.tone} label={view === 3 ? 'sparkle' : product.type} ratio="1 / 1" eager />
+            <Media
+              src={gallery[view]}
+              tone={product.tone}
+              label={view === 3 && !gallery[view] ? 'sparkle' : product.type}
+              alt={product.name}
+              ratio="1 / 1"
+              eager
+            />
             {product.badge && <span className="pcard__badge">{product.badge}</span>}
           </div>
         </div>
@@ -95,13 +133,13 @@ function ProductView({ id }) {
           <p className="eyebrow muted">{collectionTitle}</p>
           <h1 className="pdp__title">{product.name}</h1>
           <div className="pdp__meta">
-            <span className="pdp__rating" aria-label={`Rated ${product.rating.toFixed(1)} out of 5`}>
+            <span className="pdp__rating" aria-label={`Rated ${Number(product.rating).toFixed(1)} out of 5`}>
               {Array.from({ length: 5 }, (_, i) => (
                 <Icon key={i} name="star" size={14} filled={i < Math.round(product.rating)} />
               ))}
               <span className="muted">({product.reviews})</span>
             </span>
-            <span className="muted">Style #{product.sku}</span>
+            {product.sku && <span className="muted">Style #{product.sku}</span>}
           </div>
           <p className="pdp__price">{formatPrice(product.price)}</p>
 
@@ -165,12 +203,11 @@ function ProductView({ id }) {
 
           <div className="pdp__accs">
             <Accordion title="Product Details" defaultOpen>
+              {product.description && <p style={{ marginBottom: 14 }}>{product.description}</p>}
               <dl className="pdp__specs">
-                <dt>Style #</dt><dd>{product.sku}</dd>
+                {product.sku && (<><dt>Style #</dt><dd>{product.sku}</dd></>)}
                 <dt>Metal</dt><dd>{metal}</dd>
                 <dt>Category</dt><dd>{product.type}</dd>
-                <dt>Stone</dt><dd>Natural diamond, G–H color, SI clarity</dd>
-                <dt>Finish</dt><dd>High polish</dd>
               </dl>
             </Accordion>
             <Accordion title="Shipping & Returns">

@@ -15,7 +15,7 @@ export default function ProductCard({ product }) {
     <article className="pcard">
       <div className="pcard__media">
         <Link to={`/product/${product.id}`} aria-label={product.name} tabIndex={-1}>
-          <Media tone={product.tone} label={product.type} ratio="4 / 5" />
+                    <Media src={product.image} tone={product.tone} label={product.type} alt={product.name} ratio="4 / 5" />
         </Link>
         {product.badge && <span className="pcard__badge">{product.badge}</span>}
         <button

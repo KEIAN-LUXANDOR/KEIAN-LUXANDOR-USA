@@ -30,7 +30,7 @@ export default function Cart() {
         <ul className="cart__items">
           {cart.map((item, idx) => (
             <li key={`${item.product.id}-${item.size}`} className="cart__item">
-              <Link to={`/product/${item.product.id}`}><Media tone={item.product.tone} label={item.product.type} /></Link>
+              <Link to={`/product/${item.product.id}`}><Media src={item.product.image} tone={item.product.tone} label={item.product.type} /></Link>
               <div className="cart__details">
                 <Link to={`/product/${item.product.id}`} className="cart__name">{item.product.name}</Link>
                 <p className="muted">{item.product.metal}{item.size ? ` · Size ${item.size}` : ''}</p>

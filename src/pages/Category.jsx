@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getCollectionTitle, getProductsForSlug } from '../data/products';
+import { Link, useParams } from 'react-router-dom';
+import { getCollectionTitle } from '../data/products';
+import { fetchProducts } from '../api/products';
+import useFetch from '../hooks/useFetch';
 import PageHero from '../components/common/PageHero';
 import ProductCard from '../components/common/ProductCard';
 import Icon from '../components/common/Icon';
@@ -25,7 +27,10 @@ const PAGE_SIZE = 12;
 export default function Category() {
   const { slug } = useParams();
   const title = getCollectionTitle(slug);
-  const all = useMemo(() => getProductsForSlug(slug, 24), [slug]);
+
+  // Products come from the Spring Boot backend: GET /api/products?tag=<slug>
+  const { data, loading, error } = useFetch(() => fetchProducts(slug), slug);
+  const all = useMemo(() => data || [], [data]);
 
   const [metals, setMetals] = useState([]);
   const [prices, setPrices] = useState([]);
@@ -43,7 +48,7 @@ export default function Category() {
     setVisible(PAGE_SIZE);
   }
 
-  const metalOptions = useMemo(() => [...new Set(all.map((p) => p.metal))].sort(), [all]);
+  const metalOptions = useMemo(() => [...new Set(all.map((p) => p.metal).filter(Boolean))].sort(), [all]);
 
   const results = useMemo(() => {
     const bands = PRICE_BANDS.filter((b) => prices.includes(b.id));
@@ -67,7 +72,7 @@ export default function Category() {
           <button className="plp__filter-btn" onClick={() => setFiltersOpen((o) => !o)} aria-expanded={filtersOpen}>
             <Icon name="menu" size={16} /> Filters {activeCount > 0 && `(${activeCount})`}
           </button>
-          <p className="muted plp__count">{results.length} items</p>
+          <p className="muted plp__count">{loading ? 'Loading…' : `${results.length} items`}</p>
           <label className="plp__sort">
             <span className="visually-hidden">Sort by</span>
             <select value={sort} onChange={(e) => setSort(e.target.value)}>
@@ -106,15 +111,30 @@ export default function Category() {
           </aside>
 
           <div>
-            {results.length === 0 ? (
-              <p className="plp__empty muted">No pieces match these filters.</p>
-            ) : (
+            {loading && <p className="plp__empty muted">Loading products…</p>}
+
+            {error && (
+              <div className="plp__empty">
+                <p className="serif">We couldn’t load products.</p>
+                <p className="muted">Check that the Spring Boot backend is running on port 8080.</p>
+              </div>
+            )}
+
+            {!loading && !error && results.length === 0 && (
+              <div className="plp__empty">
+                <p className="muted">No pieces in this collection yet.</p>
+                <Link to="/collections/fine-jewelry" className="link-underline">View all jewelry</Link>
+              </div>
+            )}
+
+            {!loading && !error && results.length > 0 && (
               <div className="grid-products">
                 {results.slice(0, visible).map((p) => (
                   <ProductCard key={p.id} product={p} />
                 ))}
               </div>
             )}
+
             {visible < results.length && (
               <div className="plp__more">
                 <p className="muted">Showing {Math.min(visible, results.length)} of {results.length}</p>
