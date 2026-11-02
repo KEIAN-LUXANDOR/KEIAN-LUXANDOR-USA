@@ -12,7 +12,8 @@
   --c-sale: #9c2b2b;
 
   /* Type */
-  --f-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --f-serif: 'Ibarra Real Nova', Georgia, 'Times New Roman', serif;   /* titles & headings */
+  --f-logo: 'Cormorant Garamond', 'Times New Roman', serif;          /* KEIAN LUXANDOR logo */
   --f-sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
 
   --fs-xs: 0.72rem;
