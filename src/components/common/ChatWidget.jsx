@@ -12,7 +12,25 @@ export default function ChatWidget() {
     { from: 'agent', text: 'Hello! I’m your jewelry specialist. How can I help you today?' },
   ]);
   const [draft, setDraft] = useState('');
+  const [lift, setLift] = useState(0);
   const listRef = useRef(null);
+
+  // When the black bar at the very bottom of the footer scrolls into view,
+  // move the button up so it sits above the bar instead of covering it.
+  useEffect(() => {
+    const update = () => {
+      const bar = document.querySelector('.footer__bottom');
+      const overlap = bar ? window.innerHeight - bar.getBoundingClientRect().top : 0;
+      setLift(Math.max(0, Math.round(overlap)));
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
@@ -34,7 +52,11 @@ export default function ChatWidget() {
   return (
     <>
       {!isOpen && (
-        <button className="chat-launcher" onClick={() => open('chat')}>
+        <button
+          className="chat-launcher"
+          onClick={() => open('chat')}
+          style={lift ? { transform: `translateY(-${lift}px)` } : undefined}
+        >
           <Icon name="chat" size={18} />
           <span>Chat with an Expert</span>
         </button>

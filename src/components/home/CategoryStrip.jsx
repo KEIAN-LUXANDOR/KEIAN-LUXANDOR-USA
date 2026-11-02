@@ -14,8 +14,8 @@ export default function CategoryStrip() {
           {CATEGORIES.map((c) => (
             <li key={c.label}>
               <Link to={c.to} className="categories__item">
-                <Media tone={c.tone} label={c.label} ratio="1 / 1" src={c.image} />
-                <span className="eyebrow">{c.label}</span>
+                <Media tone={c.tone} label={c.label} ratio="6 / 7" src={c.image} />
+                <span className="categories__label">{c.label}</span>
               </Link>
             </li>
           ))}

@@ -15,10 +15,25 @@
   gap: 18px;
 }
 .hero__content h1 { max-width: 11ch; }
+/* Mobile: show the whole photo (no cropping), text and button underneath */
 @media (max-width: 767px) {
-  .hero { min-height: 560px; }
-  .hero__media .media__art { transform: translateY(-30%); width: 62%; }
-  .hero__content { justify-items: center; text-align: center; }
+  .hero { display: block; min-height: 0; }
+  .hero__media {
+    position: relative;
+    inset: auto;
+    height: calc(100vw * 768 / 1376); /* same shape as heroBanner.png */
+  }
+  .hero__media::after { display: none; }
+  /* zoom into the jewelry (earrings to necklace) so it isn't tiny */
+  .hero__media img { transform: scale(1.6); transform-origin: 100% 77%; }
+  .hero__media .media__art { transform: none; width: 40%; }
+  .hero__content {
+    justify-items: center;
+    text-align: center;
+    gap: 14px;
+    padding-block: 32px 40px;
+  }
+  .hero__content h1 { font-size: clamp(2.2rem, 9vw, 2.8rem); }
 }
 
 /* ── Trust bar ────────────────────────────────────────── */
@@ -44,13 +59,67 @@
 .trust__list .icon { color: var(--c-gold); }
 
 /* ── Categories ───────────────────────────────────────── */
-.categories__list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
-.categories__item { display: grid; gap: 16px; justify-items: center; }
-.categories__item .media { border-radius: 50%; }
+/* Desktop: one row of tall photos, thin gap, white name on the photo */
+.categories__list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3px;
+}
+.categories__item { position: relative; display: block; overflow: hidden; }
+.categories__item .media img { transition: transform 0.8s var(--ease); }
+.categories__item:hover .media img { transform: scale(1.05); }
 .categories__item:hover .media__art { transform: scale(1.1) rotate(-4deg); }
+.categories__item::after {
+  /* dark fade at the bottom so the white name is readable */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 40%);
+  pointer-events: none;
+}
+.categories__label {
+  position: absolute;
+  left: clamp(14px, 1.6vw, 24px);
+  bottom: clamp(14px, 1.8vw, 26px);
+  z-index: 1;
+  color: #fff;
+  font-family: var(--f-sans);
+  font-size: clamp(0.85rem, 0.7rem + 0.4vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Mobile: 2 columns of square photos, name underneath with an underline */
 @media (max-width: 767px) {
-  .categories__list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
-  .categories__list li { flex: 0 0 34%; scroll-snap-align: start; }
+  .categories__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 16px;
+  }
+  /* odd one out (5th) sits in the middle */
+  .categories__list li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 8px);
+  }
+  .categories__item {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    overflow: visible;
+  }
+  .categories__item .media { aspect-ratio: 1 / 1 !important; }
+  .categories__item::after { display: none; }
+  .categories__label {
+    position: static;
+    color: var(--c-ink);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--c-gold);
+  }
 }
 
 /* ── Campaign (split) ─────────────────────────────────── */
@@ -74,11 +143,18 @@
 }
 
 /* ── Bridal (full bleed, copy over image) ─────────────── */
-.bridal { position: relative; min-height: clamp(480px, 70vh, 760px); display: grid; place-items: center; text-align: center; }
-.bridal__media { position: absolute; inset: 0; height: 100%; }
-.bridal__copy { position: relative; display: grid; justify-items: center; gap: 16px; padding: 32px var(--gutter); }
-.bridal__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 10px; }
-.bridal .media__art { width: min(28%, 280px); transform: translateY(-62%); opacity: 0.45; }
+/* Banner photo shown whole (it has its own offer text), copy underneath */
+.bridal { text-align: center; }
+.bridal__media::after { display: none; }
+.bridal__copy {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: clamp(40px, 5vw, 64px) var(--gutter) clamp(48px, 6vw, 80px);
+}
+.bridal__copy p { color: var(--c-muted); }
+.bridal__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 14px; }
+.bridal .media__art { width: min(20%, 200px); opacity: 0.45; }
 
 /* ── Edits (two-up) ───────────────────────────────────── */
 .edits { display: grid; grid-template-columns: 1fr 1fr; }
@@ -160,4 +236,6 @@
   .story__media { min-height: 0; aspect-ratio: 4 / 3; order: -1; }
   .story__copy { justify-items: center; text-align: center; }
 }
-@media (max-width: 767px) { .bridal .media__art { width: 40%; transform: translateY(-115%); } }
+@media (max-width: 767px) {
+  .bridal__ctas { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
+}

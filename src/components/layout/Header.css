@@ -68,7 +68,7 @@
   justify-items: center;
   line-height: 1;
   color: var(--c-ink);
-  font-family: var(--f-serif);
+  font-family: var(--f-logo);
   text-transform: uppercase;
 }
 .logo__top {
@@ -124,3 +124,10 @@
 .header__nav-link.is-active::after { transform: scaleX(1); }
 
 @keyframes fade-in { from { opacity: 0; } }
+
+/* ── Image logo (sizes) ── */
+.logo-img { display: block; height: 42px; width: auto; }   /* header, desktop */
+.footer__bottom .logo-img { height: 46px; }                /* black footer */
+@media (max-width: 1023px) {
+  .logo-img { height: 32px; }                              /* header, phone */
+}
