@@ -7,7 +7,7 @@
   align-items: center;
   gap: 10px;
   padding: 13px 20px;
-  background: var(--c-ink);
+  background: #3d3229;                    /* warm espresso brown, same as the footer */
   color: #fff;
   font-size: var(--fs-xs);
   letter-spacing: 0.12em;
@@ -31,19 +31,20 @@
   box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.45);
   animation: modal-in 0.3s var(--ease);
 }
-.chat__head { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; background: var(--c-ink); color: #fff; }
+.chat__head { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; background: #3d3229; color: #fff; }
 .chat__title { font-size: 1.3rem; }
 .chat__status { display: flex; align-items: center; gap: 6px; font-size: var(--fs-xs); opacity: 0.75; }
 .chat__status span { width: 7px; height: 7px; border-radius: 50%; background: #5fd28a; }
 .chat__list { flex: 1; overflow-y: auto; padding: 18px; display: grid; gap: 10px; align-content: start; background: var(--c-bg-soft); }
 .chat__msg { max-width: 82%; padding: 10px 14px; font-size: var(--fs-sm); line-height: 1.45; }
 .chat__msg--agent { background: #fff; justify-self: start; }
-.chat__msg--me { background: var(--c-ink); color: #fff; justify-self: end; }
+.chat__msg--me { background: #3d3229; color: #fff; justify-self: end; }
 .chat__form { display: flex; border-top: 1px solid var(--c-line); }
 .chat__form .input { border: 0; }
-.chat__form .btn { min-height: 46px; padding: 0 20px; }
+.chat__form .btn { min-height: 46px; padding: 0 20px; background: #3d3229; border-color: #3d3229; }
+.chat__form .btn:hover { background: transparent; color: #3d3229; }
 
 @media (max-width: 767px) {
   .chat-launcher span { display: none; }
   .chat-launcher { padding: 14px; border-radius: 50%; }
-}
+}

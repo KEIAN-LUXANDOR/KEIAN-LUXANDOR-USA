@@ -4,9 +4,9 @@
 // like '/heroBanner.png'.
 // ─────────────────────────────────────────────────────────────
 export const HERO = {
-  eyebrow: 'The Signature Collection',
-  title: 'Timeless Radiance, Reimagined',
-  cta: { label: 'Shop the Collection', to: '/collections/signature' },
+  eyebrow: 'The Keian Signature Collection',
+  title: 'Brilliance, Redefined',
+  cta: { label: 'Shop Signature', to: '/collections/signature' },
   image: '/heroBanner.png',
   tone: 'gold',
 };
@@ -62,11 +62,10 @@ export const CATEGORIES = [
 ];
 
 export const CAMPAIGN = {
-  title: 'That’s Love,',
-  titleItalic: 'Perfected',
-  text: 'Step into our latest campaign and discover the iconic Signature Collection — handcrafted gold spheres and radiant diamond clusters.',
-  cta: { label: 'Discover the Story', to: '/about-us' },
-  image: 'image2.png',
+  title: 'Gifts Wrapped in Brilliance',
+  text: 'Every Keian Luxandor piece arrives in our signature box — lab-grown diamonds crafted to be treasured today and passed down for generations.',
+  cta: { label: 'Shop Gifts', to: '/collections/gifts' },
+  image: '/image2.png',
   tone: 'cream',
 };
 
@@ -121,4 +120,4 @@ export const STORY = {
   cta: { label: 'Explore Our Journey', to: '/about-us' },
   image: '',
   tone: 'gold',
-};
+};

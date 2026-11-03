@@ -15,6 +15,31 @@
   gap: 18px;
 }
 .hero__content h1 { max-width: 11ch; }
+/* Desktop (Tiffany style): photo fills the screen behind the see-through header,
+   white heading and white button centred near the bottom. */
+@media (min-width: 1024px) {
+  .hero {
+    margin-top: calc(-1 * var(--header-total, 120px));
+    min-height: max(560px, 100vh);
+    align-items: end;
+  }
+  .hero__media::after {
+    /* darken the top (for the menu) and the bottom (for the heading) */
+    background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.12) 22%, rgba(0, 0, 0, 0) 45%,
+      rgba(0, 0, 0, 0.05) 60%, rgba(0, 0, 0, 0.5) 100%);
+  }
+  .hero__content {
+    justify-items: center;
+    text-align: center;
+    color: #fff;
+    padding-block: 0 clamp(48px, 7vh, 90px);
+  }
+  .hero__content h1 { max-width: none; font-size: clamp(2.6rem, 1.8rem + 2.6vw, 4.4rem); }
+  .hero__content .btn { background: #fff; color: var(--c-ink); border-color: #fff; min-width: 220px; }
+  .hero__content .btn:hover { background: transparent; color: #fff; }
+}
+
 /* Mobile: show the whole photo (no cropping), text and button underneath */
 @media (max-width: 767px) {
   .hero { display: block; min-height: 0; }
@@ -122,24 +147,46 @@
   }
 }
 
-/* ── Campaign (split) ─────────────────────────────────── */
-.campaign { display: grid; grid-template-columns: 1.15fr 1fr; min-height: 640px; }
-.campaign__media { height: 100%; min-height: 420px; }
+/* ── Campaign (Tiffany-style split: text left, photo right) ── */
+.campaign {
+  display: grid;
+  grid-template-columns: minmax(300px, 31%) 1fr;
+  min-height: clamp(560px, 50vw, 760px);
+  background: #fff;
+}
+.campaign__media {
+  width: auto;                           /* let the margins shrink it (not 100% wide) */
+  height: auto;                          /* fills the row, minus the margin below */
+  min-height: 420px;
+  margin: clamp(24px, 3vw, 48px);        /* white space on all 4 sides of the photo */
+  margin-left: 0;                        /* the text column already gives space on the left */
+}
+.campaign__media::after { display: none; }
 .campaign__copy {
   display: grid;
   align-content: center;
-  justify-items: start;
-  gap: 22px;
-  padding: clamp(36px, 6vw, 110px);
-  background: var(--c-bg-soft);
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(36px, 4vw, 64px);
+  text-align: center;
 }
-.campaign__copy em { font-style: italic; color: var(--c-gold-dark); }
-.campaign__copy sup { font-size: 0.35em; vertical-align: super; font-family: var(--f-sans); }
-.campaign__copy p { max-width: 440px; color: var(--c-ink-soft); }
+.campaign__copy h2 { font-size: clamp(1.8rem, 1.3rem + 1vw, 2.4rem); }
+.campaign__copy p { max-width: 400px; color: var(--c-ink-soft); line-height: 1.7; }
+.campaign__link {
+  margin-top: 18px;
+  padding-bottom: 5px;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--c-gold);
+  transition: color var(--dur);
+}
+.campaign__link:hover { color: var(--c-gold-dark); }
 @media (max-width: 1023px) {
-  .campaign { grid-template-columns: 1fr; }
-  .campaign__media { aspect-ratio: 4 / 5; }
-  .campaign__copy { justify-items: center; text-align: center; }
+  .campaign { grid-template-columns: 1fr; min-height: 0; }
+  .campaign__media { order: -1; width: auto; margin: 20px 20px 0; height: min(calc(100vw - 40px), 600px); min-height: 0; }   /* square photo with white space around */
+  .campaign__copy { padding: 40px var(--gutter) 56px; }
 }
 
 /* ── Bridal (full bleed, copy over image) ─────────────── */
@@ -238,4 +285,4 @@
 }
 @media (max-width: 767px) {
   .bridal__ctas { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
-}
+}

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import AnnouncementBar from './AnnouncementBar';
 import Header from './Header';
 import Footer from './Footer';
 import SearchOverlay from './SearchOverlay';
@@ -30,7 +29,6 @@ export default function Layout() {
   return (
     <>
       <a href="#main" className="skip-link">Skip to content</a>
-      <AnnouncementBar />
       <Header />
       <main id="main">
         <Outlet />
@@ -45,4 +43,4 @@ export default function Layout() {
       {toast && <div className="toast" role="status">{toast}</div>}
     </>
   );
-}
+}

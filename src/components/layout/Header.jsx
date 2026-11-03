@@ -18,6 +18,22 @@ export default function Header() {
   const hoverTimer = useRef();
 
   const activeMenu = NAV_MENUS.find((m) => m.id === activeId) || null;
+  const headerRef = useRef(null);
+
+  // Home page: the header sits see-through on top of the hero photo (Tiffany style)
+  // and turns white again once you scroll or open a menu.
+  const isTransparent = pathname === '/' && !scrolled && !activeMenu;
+
+  // Share the header's height so the hero can slide up underneath it.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el || !('ResizeObserver' in window)) return undefined;
+    const ro = new ResizeObserver(() => {
+      document.documentElement.style.setProperty('--header-total', `${el.offsetHeight}px`);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   // Close mega menu on route change / Escape.
   useEffect(() => setActiveId(null), [pathname]);
@@ -43,7 +59,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`header ${scrolled ? 'is-scrolled' : ''} ${activeMenu ? 'has-menu' : ''}`}>
+    <header ref={headerRef} className={`header ${scrolled ? 'is-scrolled' : ''} ${activeMenu ? 'has-menu' : ''} ${isTransparent ? 'is-transparent' : ''}`}>
       <div className="header__top container">
         {/* Left: utility links (desktop) / burger + search (mobile) */}
         <div className="header__left">
@@ -107,4 +123,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+}
