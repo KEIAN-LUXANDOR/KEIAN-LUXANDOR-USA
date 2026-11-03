@@ -131,3 +131,31 @@
 @media (max-width: 1023px) {
   .logo-img { height: 32px; }                              /* header, phone */
 }
+
+/* ── See-through header over the home hero (desktop only) ── */
+@media (min-width: 1024px) {
+  .header { transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur); }
+  .header.is-transparent {
+    background: transparent;
+    border-bottom-color: transparent;
+    color: #fff;
+  }
+  .header.is-transparent .header__utility,
+  .header.is-transparent .header__nav-link { color: #fff; }
+  .header.is-transparent .header__nav-link::after { background: #fff; }
+  .header.is-transparent .logo-img { filter: brightness(0) invert(1); }   /* black logo → white */
+  .header.is-transparent .header__badge { background: #fff; color: var(--c-ink); }
+  .header.is-transparent .header__logo .logo-img { height: 54px; }        /* a little bigger, like Tiffany */
+}
+
+/* A little breathing room above the logo/top row (desktop) */
+@media (min-width: 1024px) {
+  .header__top { height: auto; min-height: 72px; padding-top: 18px; }
+}
+
+/* Bigger main menu (desktop) */
+@media (min-width: 1024px) {
+  .header__nav-link { font-size: 0.86rem; letter-spacing: 0.12em; padding: 14px 0 18px; }
+  .header__nav-link::after { bottom: 10px; }
+  .header__utility { font-size: 0.8rem; }
+}
