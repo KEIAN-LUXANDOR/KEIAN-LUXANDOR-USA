@@ -2,7 +2,7 @@
 .search-ov__scrim { position: absolute; inset: 0; background: rgba(17, 17, 17, 0.4); animation: fade-in 0.25s; }
 .search-ov__panel {
   position: relative;
-  background: #fff;
+  background: var(--c-bg);
   max-height: 88vh;
   overflow-y: auto;
   animation: slide-down 0.32s var(--ease);

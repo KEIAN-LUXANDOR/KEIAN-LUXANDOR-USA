@@ -1,0 +1,28 @@
+# Keian Luxandor
+
+> Keian Luxandor is a fine jewellery brand. This website presents its collections of engagement rings, wedding rings, fine jewellery and gifts, and lets visitors browse pieces, save a wishlist, book an appointment or contact the team.
+
+## Shop
+
+- [Signature Collection](/collections/signature): The Keian Signature Collection.
+- [Engagement Rings](/collections/engagement-rings): Engagement ring styles.
+- [Wedding Rings](/collections/wedding-rings): Wedding bands and rings.
+- [Fine Jewelry](/collections/fine-jewelry): Rings, earrings, necklaces, pendants and bracelets.
+- [Rings](/collections/rings): Promise rings and everyday rings.
+- [Bracelets](/collections/bracelets): Tennis bracelets and bangles.
+- [Gifts](/collections/gifts): Gift ideas for her.
+
+## About
+
+- [About Us](/about-us): The Keian Luxandor story and craftsmanship.
+- [Our Values](/our-values): Warranty, returns and authenticity information.
+
+## Help
+
+- [Contact Us](/contact-us): Phone, email, live chat and appointment booking.
+- [Find a Store](/store-locator): Store locator.
+- [Shop with Confidence](/shop-with-confidence): Buying with confidence.
+
+## Contact
+
+- Email: [info@keianluxandor.com](mailto:info@keianluxandor.com)

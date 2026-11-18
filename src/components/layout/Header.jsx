@@ -20,7 +20,7 @@ export default function Header() {
   const activeMenu = NAV_MENUS.find((m) => m.id === activeId) || null;
   const headerRef = useRef(null);
 
-  // Home page: the header sits see-through on top of the hero photo (Tiffany style)
+  // Home page: the header sits see-through on top of the hero photo
   // and turns white again once you scroll or open a menu.
   const isTransparent = pathname === '/' && !scrolled && !activeMenu;
 

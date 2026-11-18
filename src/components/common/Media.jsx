@@ -65,7 +65,7 @@ export default function Media({ src, alt = '', tone = 'cream', kind, label, rati
   return (
     <div className={`media media--${tone} ${className}`} style={{ aspectRatio: ratio }}>
       {src ? (
-        <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+        <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchPriority={eager ? 'high' : 'auto'} decoding={eager ? 'sync' : 'async'} />
       ) : (
         <svg className="media__art" viewBox="0 0 100 100" role="img" aria-label={alt || label || 'Jewelry'}>
           {art}

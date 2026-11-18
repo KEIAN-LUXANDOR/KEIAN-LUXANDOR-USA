@@ -6,7 +6,7 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: #fff;
+  background: var(--c-bg);
   border-bottom: 1px solid var(--c-line);
   transition: box-shadow var(--dur) var(--ease);
 }
@@ -132,8 +132,8 @@
   .logo-img { height: 32px; }                              /* header, phone */
 }
 
-/* ── See-through header over the home hero (desktop only) ── */
-@media (min-width: 1024px) {
+/* ── See-through header over the home hero (desktop and phone) ── */
+@media screen {
   .header { transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur); }
   .header.is-transparent {
     background: transparent;
@@ -145,7 +145,7 @@
   .header.is-transparent .header__nav-link::after { background: #fff; }
   .header.is-transparent .logo-img { filter: brightness(0) invert(1); }   /* black logo → white */
   .header.is-transparent .header__badge { background: #fff; color: var(--c-ink); }
-  .header.is-transparent .header__logo .logo-img { height: 54px; }        /* a little bigger, like Tiffany */
+  .header.is-transparent .header__icon-btn { color: #fff; }
 }
 
 /* A little breathing room above the logo/top row (desktop) */
