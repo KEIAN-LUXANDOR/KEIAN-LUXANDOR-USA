@@ -40,9 +40,15 @@ export default function Footer() {
             <h2 className="footer__nl-title">Join the World of {SITE.name}</h2>
             <p className="muted">Be the first to discover new collections, private events and stories from our atelier.</p>
           </div>
-          <form className="footer__nl-form" onSubmit={subscribe} noValidate>
+          <form
+            className="footer__nl-form"
+            onSubmit={subscribe}
+            noValidate
+            toolname="subscribe_newsletter"
+            tooldescription="Subscribe an email address to the Keian Luxandor newsletter for new collections and events."
+          >
             <label htmlFor="nl-email" className="visually-hidden">Email address</label>
-            <input id="nl-email" className="input" type="email" placeholder="Your email address" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input id="nl-email" name="email" className="input" type="email" required placeholder="Your email address" toolparamdescription="The email address to subscribe." value={email} onChange={(e) => setEmail(e.target.value)} />
             <button className="btn" type="submit">Subscribe</button>
           </form>
         </div>

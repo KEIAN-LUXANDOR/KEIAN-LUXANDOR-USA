@@ -2,10 +2,14 @@
   /* Colour */
   --c-ink: #111111;
   --c-ink-soft: #3d3d3d;
-  --c-muted: #767676;
+  --c-muted: #6e6a65;      /* warm grey, readable on ivory and blush */
   --c-line: #e6e3de;
-  --c-bg: #ffffff;
-  --c-bg-soft: #f8f6f2;
+  --c-rust: #a03d25;        /* rust from the Her Style poster */
+  --c-blush: #f6ece5;       /* soft blush band behind the Her section */
+  --c-hairline: #f0ebe2;    /* thin warm lines between sections */
+  --c-bg: #fefcf9;          /* Whisper Ivory — one background for the whole site */
+  --c-bg-soft: #fefcf9;     /* same Whisper Ivory, so there are no colour bands */
+  --c-main: #3d3229;        /* Espresso — buttons and footer bar (Theme: Espresso & Gold) */
   --c-gold: #b8955a;
   --c-gold-dark: #94733d;
   --c-accent: #111111;

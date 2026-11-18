@@ -1,27 +1,21 @@
 import Hero from '../components/home/Hero';
-import TrustBar from '../components/home/TrustBar';
 import CategoryStrip from '../components/home/CategoryStrip';
 import CampaignBanner from '../components/home/CampaignBanner';
-import BridalBanner from '../components/home/BridalBanner';
-import EditSplit from '../components/home/EditSplit';
-import ProductRail from '../components/home/ProductRail';
-import PromoCards from '../components/home/PromoCards';
-import OurStory from '../components/home/OurStory';
+import ZigZagStory from '../components/home/ZigZagStory';
+import OurCraft from '../components/home/OurCraft';
+import Benefits from '../components/home/Benefits';
 import '../components/home/home.css';
 
-// Section order mirrors the reference site's home page.
+// Home page sections, top to bottom.
 export default function Home() {
   return (
     <>
       <Hero />
-      <TrustBar />
       <CategoryStrip />
       <CampaignBanner />
-      <BridalBanner />
-      <EditSplit />
-      <ProductRail />
-      <PromoCards />
-      <OurStory />
+      <ZigZagStory />
+      <OurCraft />
+      <Benefits />
     </>
   );
 }

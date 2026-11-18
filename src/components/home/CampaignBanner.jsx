@@ -3,7 +3,7 @@ import { CAMPAIGN } from '../../data/home';
 import Media from '../common/Media';
 import Reveal from '../common/Reveal';
 
-// Tiffany-style split: short centred text on the left, large photo on the right.
+// Split layout: short centred text on the left, large photo on the right.
 export default function CampaignBanner() {
   return (
     <section className="campaign">

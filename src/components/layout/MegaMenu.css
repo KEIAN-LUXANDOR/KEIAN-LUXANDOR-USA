@@ -1,4 +1,4 @@
-﻿.mega { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-top: 1px solid var(--c-line); animation: mega-in 0.28s var(--ease); }
+﻿.mega { position: absolute; top: 100%; left: 0; right: 0; background: var(--c-bg); border-top: 1px solid var(--c-line); animation: mega-in 0.28s var(--ease); }
 .mega::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 100vh; background: rgba(17, 17, 17, 0.28); pointer-events: none; }
 @keyframes mega-in { from { opacity: 0; transform: translateY(-6px); } }
 .mega__inner { display: grid; grid-template-columns: 1fr 260px; gap: 48px; padding-block: 36px 28px; max-height: calc(100vh - 220px); overflow-y: auto; }
