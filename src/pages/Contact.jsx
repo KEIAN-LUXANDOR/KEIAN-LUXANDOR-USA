@@ -36,7 +36,7 @@ export default function Contact() {
           <a href={`mailto:${SITE.email}`} className="contact__way"><Icon name="mail" /><div><p className="eyebrow">Email</p><p>{SITE.email}</p></div></a>
           <button onClick={() => open('chat')} className="contact__way"><Icon name="chat" /><div><p className="eyebrow">Live Chat</p><p>Chat with an expert now</p></div></button>
           <button onClick={() => open('appointment')} className="contact__way"><Icon name="calendar" /><div><p className="eyebrow">Appointment</p><p>Book a virtual or in-store visit</p></div></button>
-          <Link to="/store-locator" className="contact__way"><Icon name="pin" /><div><p className="eyebrow">Visit</p><p>Find a partner store</p></div></Link>
+          <Link to="/store-locator" className="contact__way"><Icon name="pin" /><div><p className="eyebrow">Visit</p><p>Find a store</p></div></Link>
         </aside>
 
         {sent ? (

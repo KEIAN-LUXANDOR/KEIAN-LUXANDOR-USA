@@ -36,7 +36,7 @@
     padding-block: 0 clamp(48px, 7vh, 90px);
   }
   .hero__content h1 { max-width: none; font-size: clamp(2.6rem, 1.8rem + 2.6vw, 4.4rem); }
-  .hero__content .btn { background: #fff; color: var(--c-ink); border-color: #fff; min-width: 220px; }
+  .hero__content .btn { background: var(--c-bg); color: var(--c-ink); border-color: var(--c-bg); min-width: 220px; }
   .hero__content .btn:hover { background: transparent; color: #fff; }
 }
 
@@ -53,28 +53,6 @@
   .hero__content h1 { font-size: clamp(1.9rem, 9.2vw, 2.9rem); white-space: nowrap; }   /* one line on every phone */
   .hero__content .btn { min-width: 200px; }
 }
-
-/* ── Trust bar ────────────────────────────────────────── */
-.trust { border-bottom: 1px solid var(--c-line); }
-.trust__list {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding-block: 26px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.trust__list li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: none;
-  font-size: var(--fs-xs);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--c-ink-soft);
-}
-.trust__list .icon { color: var(--c-gold); }
 
 /* ── Categories ───────────────────────────────────────── */
 /* Desktop: one row of tall photos, thin gap, white name on the photo */
@@ -232,105 +210,6 @@
   .zigzag__copy { padding: 26px 20px 30px; }
 }
 
-/* ── Bridal (full bleed, copy over image) ─────────────── */
-/* Banner photo shown whole (it has its own offer text), copy underneath */
-.bridal { text-align: center; }
-.bridal__media::after { display: none; }
-.bridal__copy {
-  display: grid;
-  justify-items: center;
-  gap: 12px;
-  padding: clamp(40px, 5vw, 64px) var(--gutter) clamp(48px, 6vw, 80px);
-  background: var(--c-bg-soft);   /* ivory themed section */
-}
-.bridal__copy p { color: var(--c-muted); }
-.bridal__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 14px; }
-.bridal .media__art { width: min(20%, 200px); opacity: 0.45; }
-
-/* ── Edits (two-up) ───────────────────────────────────── */
-.edits { display: grid; grid-template-columns: 1fr 1fr; }
-.edit { position: relative; display: grid; }
-.edit__media { grid-area: 1 / 1; }
-.edit__copy {
-  grid-area: 1 / 1;
-  position: relative; /* paint above the positioned media */
-  align-self: end;
-  display: grid;
-  justify-items: center;
-  gap: 12px;
-  text-align: center;
-  padding: clamp(28px, 4vw, 56px);
-}
-.edit--dark .edit__copy { color: #fff; }
-.edit .media__art { transform: translateY(-18%); }
-@media (max-width: 767px) { .edits { grid-template-columns: 1fr; } }
-
-/* ── Product rail ─────────────────────────────────────── */
-.rail__tabs { display: inline-flex; gap: 28px; margin-top: 18px; }
-.rail__tabs button {
-  padding-bottom: 6px;
-  font-size: var(--fs-xs);
-  letter-spacing: var(--tracking);
-  text-transform: uppercase;
-  color: var(--c-muted);
-  border-bottom: 1px solid transparent;
-  transition: color var(--dur), border-color var(--dur);
-}
-.rail__tabs button.is-active, .rail__tabs button:hover { color: var(--c-ink); border-color: var(--c-ink); }
-.rail__wrap { position: relative; }
-.rail__track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 3 * 24px) / 4);
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.rail__track::-webkit-scrollbar { display: none; }
-.rail__slide { scroll-snap-align: start; }
-.rail__arrow {
-  position: absolute;
-  top: 38%;
-  z-index: 2;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  background: #fff;
-  border: 1px solid var(--c-line);
-  transition: border-color var(--dur);
-}
-.rail__arrow:hover { border-color: var(--c-ink); }
-.rail__arrow--prev { left: -22px; }
-.rail__arrow--next { right: -22px; }
-.rail__more { text-align: center; margin-top: 40px; }
-@media (max-width: 1023px) { .rail__track { grid-auto-columns: calc((100% - 2 * 16px) / 2.4); gap: 16px; } .rail__arrow { display: none; } }
-
-/* ── Promo cards ──────────────────────────────────────── */
-.promos { padding-top: 0; }
-.promos__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 32px); }
-.promo__link { display: grid; gap: 20px; }
-.promo__link:hover .media__art { transform: scale(1.06); }
-.promo__copy { display: grid; gap: 8px; justify-items: start; }
-.promo__copy .link-underline { margin-top: 6px; }
-@media (max-width: 767px) { .promos__grid { grid-template-columns: 1fr; } }
-
-/* ── Our story ────────────────────────────────────────── */
-.story { display: grid; grid-template-columns: 1fr 1.2fr; background: var(--c-ink); color: #fff; }
-.story__copy { display: grid; align-content: center; justify-items: start; gap: 18px; padding: clamp(40px, 7vw, 120px); }
-.story__copy .eyebrow { color: var(--c-gold); }
-.story__copy p:not(.eyebrow) { max-width: 380px; color: rgba(255, 255, 255, 0.75); }
-.story__media { min-height: 520px; height: 100%; }
-@media (max-width: 1023px) {
-  .story { grid-template-columns: 1fr; }
-  .story__media { min-height: 0; aspect-ratio: 4 / 3; order: -1; }
-  .story__copy { justify-items: center; text-align: center; }
-}
-@media (max-width: 767px) {
-  .bridal__ctas { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
-}
-
 /* ── All-White home: one background, same width and spacing for every section ── */
 .section.categories { padding-block: 80px 24px; }
 .categories .container { max-width: 1248px; }
@@ -357,12 +236,12 @@
 
 /* ── Layout: Wide + Rust Band ─────────────────────────────
    Sections are 1600px wide; the "Unmistakably Her" section is a
-   full-width soft blush band with dark text and the poster on the right. */
+   full-width ivory band with thin lines, dark text and the poster on the right. */
 .categories .container { max-width: 1600px; padding-inline: 24px; }
 .zigzag { max-width: 1600px; }
 .zigzag__row, .zigzag__row.is-reversed { grid-template-columns: 1fr 1fr; min-height: 360px; }
 
-.campaign { background: var(--c-blush); }   /* soft blush band, dark text */
+.campaign { background: var(--c-bg); border-block: 1px solid var(--c-line); }   /* ivory, thin lines above and below */
 .campaign__copy h2 { color: var(--c-ink); }
 .campaign__copy p { color: var(--c-ink-soft); }
 .campaign__link { color: var(--c-ink); border-bottom-color: var(--c-gold); }
@@ -445,4 +324,34 @@
 @media (max-width: 479px) {
   .benefits { margin-bottom: 56px; padding: 0 20px; }
   .benefits__list { grid-template-columns: 1fr; row-gap: 28px; }
+}
+
+/* ── Home sections take turns: ivory and sand (no lines between) ──
+   Each band fills the full screen width. Change the colours in variables.css
+   (--c-bg and --c-sand). */
+.section.categories, .zigzag, .benefits {
+  background: var(--c-white);
+  box-shadow: 0 0 0 100vmax var(--c-white);
+  clip-path: inset(0 -100vmax);
+}
+.campaign, .craft {
+  background: var(--c-sand);
+  box-shadow: 0 0 0 100vmax var(--c-sand);
+  clip-path: inset(0 -100vmax);
+}
+.campaign { border-block: 0; }
+.zigzag__copy,
+.zigzag__row:not(.is-reversed) .zigzag__copy,
+.zigzag__row.is-reversed .zigzag__copy { border: 0; }
+.craft__arch { border: 0; }
+
+/* Spacing inside each band (bands sit right next to each other) */
+.section.categories { margin: 0; padding-block: 64px; }
+.campaign { margin: 0; }
+.zigzag { margin: 0 auto; padding-block: 48px; }
+.craft { margin: 0 auto; padding-block: 72px; }
+.benefits { margin: 0 auto; padding-block: 56px; }
+@media (max-width: 767px) {
+  .zigzag__row:not(.is-reversed) .zigzag__copy,
+  .zigzag__row.is-reversed .zigzag__copy { border: 0; }
 }

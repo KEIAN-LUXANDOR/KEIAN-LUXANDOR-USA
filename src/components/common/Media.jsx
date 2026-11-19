@@ -60,12 +60,15 @@ const kindFor = (label = '') => {
   return 'sparkle';
 };
 
-export default function Media({ src, alt = '', tone = 'cream', kind, label, ratio = '1 / 1', className = '', eager = false }) {
+// Pass `sizes` to also load a small copy (name-400.webp) on phones and small tiles.
+const smallCopy = (src) => (src && src.endsWith('.webp') ? `${src.replace(/\.webp$/, '-400.webp')} 400w, ${src} 1000w` : undefined);
+
+export default function Media({ src, alt = '', tone = 'cream', kind, label, ratio = '1 / 1', className = '', eager = false, sizes }) {
   const art = ART[kind || kindFor(label || alt)];
   return (
     <div className={`media media--${tone} ${className}`} style={{ aspectRatio: ratio }}>
       {src ? (
-        <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchPriority={eager ? 'high' : 'auto'} decoding={eager ? 'sync' : 'async'} />
+        <img src={src} srcSet={sizes ? smallCopy(src) : undefined} sizes={sizes} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchPriority={eager ? 'high' : 'auto'} decoding={eager ? 'sync' : 'async'} />
       ) : (
         <svg className="media__art" viewBox="0 0 100 100" role="img" aria-label={alt || label || 'Jewelry'}>
           {art}

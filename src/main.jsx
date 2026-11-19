@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { ShopProvider } from './context/ShopContext';
 import { UIProvider } from './context/UIContext';
+import './styles/fonts.css';
 import './styles/variables.css';
 import './styles/global.css';
 

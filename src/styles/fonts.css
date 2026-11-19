@@ -1,0 +1,9 @@
+/* Fonts are stored in public/fonts so the site does not wait for Google Fonts.
+   Ibarra Real Nova = titles and headings, Jost = subtext. Both are free (SIL Open Font License). */
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 300; font-display: swap; src: url('/fonts/jost-latin-300-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/jost-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/jost-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Ibarra Real Nova'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/ibarra-real-nova-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Ibarra Real Nova'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/ibarra-real-nova-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Ibarra Real Nova'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/ibarra-real-nova-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Ibarra Real Nova'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/ibarra-real-nova-latin-400-italic.woff2') format('woff2'); }

@@ -28,7 +28,7 @@ export default function StoreLocator() {
 
   return (
     <>
-      <PageHero title="Find a Store" text="Locate your nearest partner store to see our collections in person." crumbs={[{ label: 'Find a Store' }]} />
+      <PageHero title="Find a Store" text="See Keian Luxandor pieces in person at a store near you." crumbs={[{ label: 'Find a Store' }]} />
       <section className="section container locator">
         <div className="locator__panel">
           <form className="locator__search" onSubmit={(e) => e.preventDefault()} role="search">

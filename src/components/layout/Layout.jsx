@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -31,7 +31,10 @@ export default function Layout() {
       <a href="#main" className="skip-link">Skip to content</a>
       <Header />
       <main id="main">
-        <Outlet />
+        {/* Shown for a moment while another page's code loads */}
+        <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
 
@@ -43,4 +46,4 @@ export default function Layout() {
       {toast && <div className="toast" role="status">{toast}</div>}
     </>
   );
-}
+}

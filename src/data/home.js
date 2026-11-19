@@ -11,29 +11,12 @@ export const HERO = {
   tone: 'gold',
 };
 
-export const TRUST_BADGES = [
-  { icon: 'award', label: 'Most Awarded Brand' },
-  { icon: 'gem', label: 'GIA Verified' },
-  { icon: 'leaf', label: 'Recycled Gold Initiative' },
-  { icon: 'hash', label: 'Unique Serial Number' },
-  { icon: 'calendar', label: 'Since 1989' },
-];
-
-// export const CATEGORIES = [
-//   { label: 'Earrings', to: '/collections/earrings', tone: 'gold' },
-//   { label: 'Rings', to: '/collections/rings', tone: 'rose' },
-//   { label: 'Bracelets', to: '/collections/bracelets', tone: 'silver' },
-//   { label: 'Pendants', to: '/collections/pendants', tone: 'gold' },
-//   { label: 'Necklaces', to: '/collections/necklaces', tone: 'cream' },
-// ];
-
-
 export const CATEGORIES = [
   {
     label: 'Earrings',
     to: '/collections/earrings',
     tone: 'gold',
-    image: '/pendant.webp',
+    image: '/earring.webp',
   },
   {
     label: 'Rings',
@@ -51,7 +34,7 @@ export const CATEGORIES = [
     label: 'Pendants',
     to: '/collections/pendants',
     tone: 'gold',
-    image: '/earring.webp',
+    image: '/pendant.webp',
   },
   {
     label: 'Necklaces',
@@ -100,60 +83,7 @@ export const CRAFT = {
 // Please keep these in line with Keian's real shipping, returns and warranty policies.
 export const BENEFITS = [
   { icon: 'ship', title: 'Complimentary Shipping', text: 'Every order is insured and delivered with care.' },
-  { icon: 'returns', title: 'Easy Returns', text: 'Complimentary returns on every order.' },
+  { icon: 'returns', title: '15-Day Returns', text: 'Return any piece within 15 days in its original condition.' },
   { icon: 'warranty', title: 'Lifetime Warranty', text: 'Every Keian Luxandor piece is covered for life.' },
   { icon: 'appointment', title: 'Personal Appointment', text: 'Find your piece one-to-one with a Keian expert.' },
 ];
-
-export const BRIDAL = {
-  title: 'Celebrate Forever',
-  text: 'Designed to be loved for a lifetime.',
-  ctas: [
-    { label: 'Shop Wedding Rings', to: '/collections/wedding-rings' },
-    { label: 'Shop Engagement Rings', to: '/collections/engagement-rings' },
-  ],
-  image: '/celebrate.webp',
-  tone: 'blush',
-};
-
-export const EDITS = [
-  {
-    title: 'The Silver Edit',
-    text: ['Born in New York.', 'Designed for everywhere.'],
-    cta: { label: 'Shop Silver', to: '/collections/sterling-silver' },
-    image: '',
-    tone: 'silver',
-  },
-  {
-    title: "The Men's Edit",
-    text: ['Personal. Expressive. Unapologetically his.'],
-    cta: { label: "Shop Men's", to: '/collections/mens-jewelry' },
-    image: '',
-    tone: 'dark',
-  },
-];
-
-export const PROMO_CARDS = [
-  {
-    title: 'Locate Your Nearest Store',
-    text: 'Discover our trusted partner stores near you.',
-    cta: { label: 'Find a Store', to: '/store-locator' },
-    image: '',
-    tone: 'cream',
-  },
-  {
-    title: 'For Children in Need',
-    text: 'All proceeds from our giving-back pieces support our charity partners.',
-    cta: { label: 'Learn More', to: '/collections/giving-back' },
-    image: '',
-    tone: 'silver',
-  },
-];
-
-export const STORY = {
-  title: 'Our Story',
-  text: 'Discover the passion and artistry behind every piece we create.',
-  cta: { label: 'Explore Our Journey', to: '/about-us' },
-  image: '',
-  tone: 'gold',
-};

@@ -52,7 +52,7 @@ const priceRangeForSlug = (slug) => {
   return [350, 4200];
 };
 
-const BADGES = [null, 'New', null, 'Best Seller', null, null, 'Award Winner', null];
+const BADGES = [null, 'New', null, 'Best Seller', null, null, null, null];
 
 // Flatten navigation into slug → label so titles match the menu.
 const SLUG_LABELS = (() => {

@@ -54,6 +54,7 @@ export default function ChatWidget() {
       {!isOpen && (
         <button
           className="chat-launcher"
+          aria-label="Chat with an Expert"
           onClick={() => open('chat')}
           style={lift ? { transform: `translateY(-${lift}px)` } : undefined}
         >

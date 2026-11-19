@@ -1,17 +1,20 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
-import Category from './pages/Category';
-import Product from './pages/Product';
-import About from './pages/About';
-import Values from './pages/Values';
-import Contact from './pages/Contact';
-import StoreLocator from './pages/StoreLocator';
-import Wishlist from './pages/Wishlist';
-import Cart from './pages/Cart';
-import Search from './pages/Search';
-import InfoPage from './pages/InfoPage';
-import NotFound from './pages/NotFound';
+
+// Other pages load only when someone opens them (keeps the home page fast).
+const Category = lazy(() => import('./pages/Category'));
+const Product = lazy(() => import('./pages/Product'));
+const About = lazy(() => import('./pages/About'));
+const Values = lazy(() => import('./pages/Values'));
+const Contact = lazy(() => import('./pages/Contact'));
+const StoreLocator = lazy(() => import('./pages/StoreLocator'));
+const Wishlist = lazy(() => import('./pages/Wishlist'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Search = lazy(() => import('./pages/Search'));
+const InfoPage = lazy(() => import('./pages/InfoPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 export default function App() {
   return (
@@ -29,7 +32,6 @@ export default function App() {
         <Route path="search" element={<Search />} />
         <Route path="guides/:topic" element={<InfoPage />} />
         <Route path="shop-with-confidence" element={<InfoPage topic="shop-with-confidence" />} />
-        <Route path="bridal-style-quiz" element={<InfoPage topic="bridal-style-quiz" />} />
         <Route path="accessibility" element={<InfoPage topic="accessibility" />} />
         <Route path="privacy-policy" element={<InfoPage topic="privacy-policy" />} />
         <Route path="sitemap" element={<InfoPage topic="sitemap" />} />
