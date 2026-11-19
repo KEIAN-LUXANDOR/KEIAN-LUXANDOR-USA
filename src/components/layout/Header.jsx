@@ -36,7 +36,11 @@ export default function Header() {
   }, []);
 
   // Close mega menu on route change / Escape.
-  useEffect(() => setActiveId(null), [pathname]);
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
+    setActiveId(null);
+  }
   useEscapeKey(() => setActiveId(null), Boolean(activeId));
 
   // Compact header shadow once the page scrolls.

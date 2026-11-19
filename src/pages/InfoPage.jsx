@@ -12,11 +12,11 @@ const CONTENT = {
       ['Start with her style', 'Notice the jewelry she already wears — metal colour, delicate or bold, vintage or modern.'],
       ['Choose a shape', 'Round is the most brilliant; oval and pear elongate the finger; emerald and radiant feel architectural.'],
       ['Set a budget', 'Balance carat weight with cut quality — a well-cut stone looks larger and brighter.'],
-      ['Find her size', 'Borrow a ring she wears on her right hand or visit a store for a complimentary sizing.'],
+      ['Find her size', 'Borrow a ring she wears on her right hand, or book an appointment and we’ll help you find the size.'],
     ],
   },
   'choose-a-diamond': {
-    title: 'How to Choose a Diamond',
+    title: 'Diamond Buying Guide',
     sections: [
       ['Cut', 'The most important of the 4Cs — it determines sparkle.'],
       ['Color', 'Graded D (colourless) to Z. G–H offers excellent value.'],
@@ -25,7 +25,7 @@ const CONTENT = {
     ],
   },
   'diamond-clarity': {
-    title: 'Diamond Clarity Chart',
+    title: 'Diamond Clarity Explained',
     sections: [
       ['FL / IF', 'Flawless or internally flawless — extremely rare.'],
       ['VVS1 / VVS2', 'Very, very slightly included; inclusions difficult to see under 10× magnification.'],
@@ -34,16 +34,12 @@ const CONTENT = {
     ],
   },
   'shop-with-confidence': {
-    title: 'Shop Confidently®',
+    title: 'Shop with Confidence',
     sections: [
       ['Lifetime warranty', 'Every piece is protected against manufacturing defects.'],
-      ['Free shipping & returns', 'Insured delivery and 30-day returns.'],
-      ['Certified quality', 'Unique serial numbers and certificates of authenticity.'],
+      ['Shipping & returns', 'Complimentary insured shipping and 15-day returns.'],
+      ['Personal help', 'A Keian expert is a message, call or appointment away.'],
     ],
-  },
-  'bridal-style-quiz': {
-    title: 'Discover Your Bridal Style',
-    sections: [['Coming soon', 'Answer a few questions and we’ll recommend engagement rings and bands that match your style.']],
   },
   accessibility: {
     title: 'Accessibility',

@@ -6,7 +6,7 @@
   top: 12px;
   left: 12px;
   padding: 4px 10px;
-  background: #fff;
+  background: var(--c-bg);
   font-size: 0.66rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -30,7 +30,7 @@
   right: 12px;
   bottom: 12px;
   min-height: 42px;
-  background: #fff;
+  background: var(--c-bg);
   font-size: var(--fs-xs);
   letter-spacing: var(--tracking);
   text-transform: uppercase;

@@ -1,23 +1,25 @@
 :root {
-  /* Colour */
-  --c-ink: #111111;
-  --c-ink-soft: #3d3d3d;
-  --c-muted: #6e6a65;      /* warm grey, readable on ivory and blush */
-  --c-line: #e6e3de;
-  --c-rust: #a03d25;        /* rust from the Her Style poster */
-  --c-blush: #f6ece5;       /* soft blush band behind the Her section */
-  --c-hairline: #f0ebe2;    /* thin warm lines between sections */
-  --c-bg: #fefcf9;          /* Whisper Ivory — one background for the whole site */
-  --c-bg-soft: #fefcf9;     /* same Whisper Ivory, so there are no colour bands */
-  --c-main: #3d3229;        /* Espresso — buttons and footer bar (Theme: Espresso & Gold) */
-  --c-gold: #b8955a;
-  --c-gold-dark: #94733d;
-  --c-accent: #111111;
-  --c-sale: #9c2b2b;
+  /* Colour — Keian palette: 6 colours + sale red */
+  --c-bg: #fefcf9;          /* Ivory — background for the whole site */
+  --c-sand: #f8f4ee;        /* Sand — home bands that take turns with ivory, newsletter */
+  --c-main: #3d3229;        /* Espresso — all text, buttons, footer */
+  --c-muted: #6e6a65;       /* Warm grey — small text */
+  --c-gold: #b8955a;        /* Gold — lines, icons, link hover */
+  --c-line: #e6e3de;        /* Line — all borders */
+  --c-sale: #9c2b2b;        /* Sale red — sale prices and errors only */
+
+  /* Same colours under the names used around the code */
+  --c-ink: var(--c-main);
+  --c-ink-soft: var(--c-main);
+  --c-accent: var(--c-main);
+  --c-gold-dark: var(--c-gold);
+  --c-white: var(--c-bg);
+  --c-bg-soft: var(--c-bg);
+  --c-hairline: var(--c-line);
 
   /* Type */
   --f-serif: 'Ibarra Real Nova', Georgia, 'Times New Roman', serif;   /* titles & headings */
-  --f-logo: 'Cormorant Garamond', 'Times New Roman', serif;          /* KEIAN LUXANDOR logo */
+  --f-logo: 'Ibarra Real Nova', 'Times New Roman', serif;          /* KEIAN LUXANDOR logo */
   --f-sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
 
   --fs-xs: 0.72rem;

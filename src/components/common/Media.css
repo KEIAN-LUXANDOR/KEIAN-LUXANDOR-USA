@@ -34,10 +34,8 @@
   pointer-events: none;
 }
 
-.media--gold   { --tone-bg: linear-gradient(160deg, #f4ead6, #e6d3ad); --tone-ink: #9a7a3c; }
-.media--silver { --tone-bg: linear-gradient(160deg, #f1f2f4, #d9dce1); --tone-ink: #6f7680; }
-.media--rose   { --tone-bg: linear-gradient(160deg, #f7e7df, #ecc9b9); --tone-ink: #a2664e; }
-.media--cream  { --tone-bg: linear-gradient(160deg, #faf6ef, #ece3d3); --tone-ink: #9b8562; }
-.media--blush  { --tone-bg: linear-gradient(160deg, #f8ece9, #ead3cf); --tone-ink: #a06c66; }
-.media--dark   { --tone-bg: linear-gradient(160deg, #2b2a28, #141414); --tone-ink: #c8a96a; }
-.media--dark::after { background: radial-gradient(120% 80% at 30% 20%, rgba(255, 255, 255, 0.08), transparent 60%); }
+/* Picture boxes without a photo: one soft ivory-gold for every tone */
+.media--gold, .media--silver, .media--rose, .media--cream, .media--blush, .media--dark {
+  --tone-bg: var(--c-sand);
+  --tone-ink: var(--c-gold);
+}

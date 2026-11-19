@@ -38,7 +38,7 @@ export default function Footer() {
         <div className="container footer__newsletter-inner">
           <div>
             <h2 className="footer__nl-title">Join the World of {SITE.name}</h2>
-            <p className="muted">Be the first to discover new collections, private events and stories from our atelier.</p>
+            <p className="muted">New collections, styling ideas and offers — straight to your inbox.</p>
           </div>
           <form
             className="footer__nl-form"

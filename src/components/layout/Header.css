@@ -142,9 +142,9 @@
   }
   .header.is-transparent .header__utility,
   .header.is-transparent .header__nav-link { color: #fff; }
-  .header.is-transparent .header__nav-link::after { background: #fff; }
+  .header.is-transparent .header__nav-link::after { background: var(--c-bg); }
   .header.is-transparent .logo-img { filter: brightness(0) invert(1); }   /* black logo → white */
-  .header.is-transparent .header__badge { background: #fff; color: var(--c-ink); }
+  .header.is-transparent .header__badge { background: var(--c-bg); color: var(--c-ink); }
   .header.is-transparent .header__icon-btn { color: #fff; }
 }
 

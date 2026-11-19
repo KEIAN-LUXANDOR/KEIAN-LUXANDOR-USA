@@ -7,24 +7,24 @@ export const FOOTER_COLUMNS = [
       { label: 'Engagement Rings', to: '/collections/engagement-rings' },
       { label: 'Wedding Rings', to: '/collections/wedding-rings' },
       { label: 'Fine Jewelry', to: '/collections/fine-jewelry' },
-      { label: "Men's Jewelry", to: '/collections/mens-jewelry' },
-      { label: 'Birthstone Jewelry', to: '/collections/birthstone-jewelry' },
+      { label: "Women's Jewelry", to: '/collections/womens-jewelry' },
+      { label: 'Gifts', to: '/collections/gifts' },
     ],
   },
   {
-    title: 'Our Company',
+    title: 'About Keian',
     links: [
-      { label: 'About Us', to: '/about-us' },
-      { label: 'Journal', to: '/guides/engagement-ring-guide' },
+      { label: 'Our Story', to: '/about-us' },
+      { label: 'Our Promise', to: '/our-values' },
+      { label: 'Ring Guides', to: '/guides/engagement-ring-guide' },
     ],
   },
   {
-    title: 'Customer Care',
+    title: 'Help',
     links: [
-      { label: 'Shipping & Return Policy', to: '/our-values#returns' },
-      { label: 'Warranty & Repairs', to: '/our-values#warranty' },
-      { label: 'Shop Confidently®', to: '/shop-with-confidence' },
-      { label: 'Trade-Up Program', to: '/our-values#trade-up' },
+      { label: 'Shipping & Returns', to: '/our-values#returns' },
+      { label: 'Warranty & Care', to: '/our-values#warranty' },
+      { label: 'Shop with Confidence', to: '/shop-with-confidence' },
       { label: 'Accessibility', to: '/accessibility' },
     ],
   },
@@ -39,11 +39,10 @@ export const FOOTER_COLUMNS = [
     ],
   },
   {
-    title: 'Join & Connect',
+    title: 'My Account',
     links: [
       { label: 'Wishlist', to: '/wishlist' },
-      { label: 'Retailer Program', to: '/contact-us' },
-      { label: 'Affiliate Program', to: '/contact-us' },
+      { label: 'Shopping Bag', to: '/cart' },
     ],
   },
 ];

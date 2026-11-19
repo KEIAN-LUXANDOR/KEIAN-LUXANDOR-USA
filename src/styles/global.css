@@ -81,10 +81,10 @@ h3 { font-size: var(--fs-h3); }
 .btn:hover { background: transparent; color: var(--c-main); }
 .btn--outline { background: transparent; color: var(--c-main); }
 .btn--outline:hover { background: var(--c-main); color: #fff; }
-.btn--light { background: #fff; color: var(--c-ink); border-color: #fff; }
+.btn--light { background: var(--c-bg); color: var(--c-ink); border-color: var(--c-bg); }
 .btn--light:hover { background: transparent; color: #fff; }
-.btn--ghost-light { background: transparent; color: #fff; border-color: #fff; }
-.btn--ghost-light:hover { background: #fff; color: var(--c-ink); }
+.btn--ghost-light { background: transparent; color: #fff; border-color: var(--c-bg); }
+.btn--ghost-light:hover { background: var(--c-bg); color: var(--c-ink); }
 .btn--block { width: 100%; }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
@@ -109,7 +109,7 @@ h3 { font-size: var(--fs-h3); }
   min-height: 46px;
   padding: 10px 14px;
   border: 1px solid var(--c-line);
-  background: #fff;
+  background: var(--c-bg);
   border-radius: var(--radius);
   font-weight: 300;
   transition: border-color var(--dur);

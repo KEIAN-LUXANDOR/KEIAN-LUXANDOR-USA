@@ -83,7 +83,7 @@ export default function MegaMenu({ menu, onNavigate }) {
       </div>
 
       <div className="mega__expert">
-        <p>Get expert advice to discover your ideal piece and begin your journey to exquisite elegance.</p>
+        <p>Not sure where to start? A Keian expert can help you choose.</p>
         <button
           className="link-underline"
           onClick={() => {

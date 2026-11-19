@@ -197,7 +197,7 @@ function ProductView({ product }) {
 
           <ul className="pdp__assure">
             <li><Icon name="truck" size={20} /> Complimentary shipping</li>
-            <li><Icon name="refresh" size={20} /> 30-day returns</li>
+            <li><Icon name="refresh" size={20} /> 15-day returns</li>
             <li><Icon name="shield" size={20} /> Lifetime warranty</li>
           </ul>
 
@@ -211,10 +211,10 @@ function ProductView({ product }) {
               </dl>
             </Accordion>
             <Accordion title="Shipping & Returns">
-              <p>Complimentary insured shipping on all orders. Returns accepted within 30 days in original condition.</p>
+              <p>Complimentary insured shipping on all orders. Returns accepted within 15 days in original condition.</p>
             </Accordion>
             <Accordion title="Warranty & Care">
-              <p>Every piece carries a unique serial number and lifetime manufacturing warranty. Clean gently with warm water and a soft brush.</p>
+              <p>Every piece is covered by our lifetime manufacturing warranty. Clean gently with warm water and a soft brush.</p>
             </Accordion>
           </div>
         </div>
