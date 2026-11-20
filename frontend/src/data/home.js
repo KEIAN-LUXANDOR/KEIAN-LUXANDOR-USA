@@ -76,6 +76,9 @@ export const CRAFT = {
   title: ['Made by Hand,', 'Made to Last'],
   text: 'From the first sketch to the final polish, every Keian Luxandor piece is shaped with care — lab-grown diamonds, finished to shine for a lifetime.',
   cta: { label: 'Discover Our Story', to: '/about-us' },
+  // Ring video in the arch (plays silently on repeat). Remove `video` to show `image` instead.
+  video: '/craft-ring.mp4',
+  poster: '/craft-ring.webp',
   image: '/bracelet.webp',
 };
 

@@ -1,0 +1,121 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "fontSize": "15px", "primaryColor": "#fefcf9", "primaryBorderColor": "#b8955a", "primaryTextColor": "#3d3229", "lineColor": "#3d3229", "tertiaryColor": "#f8f4ee"}}}%%
+%% Keian Luxandor — database tables.
+%% BUILT today: PRODUCTS, PRODUCT_IMAGES, PRODUCT_TAGS (see database/schema.sql).
+%% PLANNED: everything else, added as the shop grows.
+erDiagram
+  PRODUCTS ||--o{ PRODUCT_IMAGES : "has photos"
+  PRODUCTS ||--o{ PRODUCT_TAGS : "is in collections"
+  CUSTOMERS ||--o{ ADDRESSES : "saves"
+  CUSTOMERS ||--o| CARTS : "has"
+  CARTS ||--o{ CART_ITEMS : "contains"
+  PRODUCTS ||--o{ CART_ITEMS : "added as"
+  CUSTOMERS ||--o{ WISHLIST_ITEMS : "saves"
+  PRODUCTS ||--o{ WISHLIST_ITEMS : "saved as"
+  CUSTOMERS ||--o{ ORDERS : "places"
+  ORDERS ||--|{ ORDER_ITEMS : "contains"
+  PRODUCTS ||--o{ ORDER_ITEMS : "sold as"
+  ORDERS ||--o{ PAYMENTS : "paid by"
+  ORDERS ||--o{ RETURNS : "may have"
+  CUSTOMERS ||--o{ APPOINTMENTS : "books"
+
+  PRODUCTS {
+    bigint id PK
+    varchar sku UK
+    varchar name
+    varchar type
+    varchar metal
+    numeric price
+    varchar badge
+    int rating
+    int reviews
+    varchar description
+    varchar category
+  }
+  PRODUCT_IMAGES {
+    bigint product_id PK, FK
+    int position PK
+    varchar url
+  }
+  PRODUCT_TAGS {
+    bigint product_id FK
+    varchar tag
+  }
+  CUSTOMERS {
+    bigint id PK
+    varchar email UK
+    varchar password_hash
+    varchar first_name
+    varchar last_name
+    varchar phone
+    timestamp created_at
+  }
+  ADDRESSES {
+    bigint id PK
+    bigint customer_id FK
+    varchar line1
+    varchar city
+    varchar state
+    varchar zip
+    varchar country
+  }
+  CARTS {
+    bigint id PK
+    bigint customer_id FK
+    timestamp updated_at
+  }
+  CART_ITEMS {
+    bigint id PK
+    bigint cart_id FK
+    bigint product_id FK
+    varchar size
+    int qty
+  }
+  WISHLIST_ITEMS {
+    bigint customer_id PK, FK
+    bigint product_id PK, FK
+  }
+  ORDERS {
+    bigint id PK
+    varchar order_number UK
+    bigint customer_id FK
+    varchar status
+    numeric subtotal
+    numeric tax
+    numeric shipping
+    numeric total
+    varchar tracking_number
+    timestamp created_at
+  }
+  ORDER_ITEMS {
+    bigint id PK
+    bigint order_id FK
+    bigint product_id FK
+    varchar size
+    int qty
+    numeric unit_price
+  }
+  PAYMENTS {
+    bigint id PK
+    bigint order_id FK
+    varchar provider
+    varchar provider_ref
+    numeric amount
+    varchar status
+  }
+  RETURNS {
+    bigint id PK
+    bigint order_id FK
+    varchar reason
+    varchar status
+    numeric refund_amount
+    timestamp requested_at
+  }
+  APPOINTMENTS {
+    bigint id PK
+    bigint customer_id FK
+    varchar name
+    varchar email
+    varchar type
+    timestamp preferred_at
+    varchar status
+  }

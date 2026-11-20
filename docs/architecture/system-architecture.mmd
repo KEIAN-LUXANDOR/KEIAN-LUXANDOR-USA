@@ -1,0 +1,46 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "fontSize": "16px", "primaryColor": "#fefcf9", "primaryBorderColor": "#b8955a", "primaryTextColor": "#3d3229", "lineColor": "#3d3229", "clusterBkg": "#f8f4ee", "clusterBorder": "#b8955a"}}}%%
+%% Keian Luxandor — system architecture (dashed = planned, not built yet)
+flowchart TB
+  subgraph CLIENT["<b>1. CLIENT</b> — the customer's device"]
+    direction LR
+    U1["Web browser<br/>Chrome · Safari"] ~~~ U2["Mobile browser<br/>phone · tablet"] ~~~ U3["Admin<br/>Keian team"]
+  end
+
+  subgraph EDGE["<b>2. CLOUD EDGE</b> — fast & secure entry"]
+    direction LR
+    DNS["Domain & DNS<br/>keianluxandor.com"] --> CDN["CDN + SSL (https)<br/>Azure Front Door"]
+  end
+
+  subgraph FRONT["<b>3. FRONT END</b> — frontend/"]
+    direction LR
+    FE1["React 19 + Vite<br/>storefront"] ~~~ FE2["Admin panel<br/>React (planned)"] ~~~ FE3["Hosting<br/>Azure Static Web Apps"]
+  end
+
+  subgraph BACK["<b>4. BACK END</b> — backend/"]
+    direction LR
+    API["Spring Boot 4 REST API<br/>Java 17 · /api"] --- MODS["Products ✔<br/>Cart · Orders · Payments<br/>Users · Returns · Appointments (planned)"]
+    API --- SEC["Security<br/>login (JWT) · roles (planned)"]
+  end
+
+  subgraph DATA["<b>5. DATABASE & STORAGE</b> — database/"]
+    direction LR
+    DB[("PostgreSQL 17<br/>Azure Database for PostgreSQL")] ~~~ S3[("File storage<br/>Azure Blob Storage<br/>photos · videos")]
+  end
+
+  subgraph EXT["<b>6. THIRD-PARTY SERVICES</b> (planned)"]
+    direction LR
+    PAY["Payments<br/>Stripe · PayPal"] ~~~ SHIP["Shipping<br/>FedEx · UPS"] ~~~ MAIL["Email / SMS<br/>SendGrid · Twilio"] ~~~ GA["Analytics<br/>Google Analytics"]
+  end
+
+  subgraph DEVOPS["<b>7. DEVOPS</b> — build, deploy, watch"]
+    direction LR
+    GH["GitHub<br/>KEIAN-LUXANDOR-USA"] --> CI["GitHub Actions<br/>build · test · deploy"] ~~~ MON["Monitoring<br/>Azure Application Insights"]
+  end
+
+  CLIENT -->|https| EDGE
+  EDGE --> FRONT
+  FRONT -->|"API calls (JSON)"| BACK
+  BACK -->|read / write| DATA
+  BACK <-->|secure calls| EXT
+  DATA ~~~ DEVOPS
+  EXT ~~~ DEVOPS

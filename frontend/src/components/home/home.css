@@ -355,3 +355,7 @@
   .zigzag__row:not(.is-reversed) .zigzag__copy,
   .zigzag__row.is-reversed .zigzag__copy { border: 0; }
 }
+
+/* Ring video in the "Made by Hand" arch: its white background blends into ivory */
+.craft__arch:has(video) { background: var(--c-bg); }
+.craft__arch video { width: 100%; height: 100%; display: block; object-fit: contain; mix-blend-mode: multiply; }
