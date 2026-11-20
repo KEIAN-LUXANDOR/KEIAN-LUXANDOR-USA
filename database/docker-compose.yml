@@ -1,0 +1,21 @@
+# Starts the PostgreSQL database for the Keian Luxandor backend.
+# Run from the database folder:   docker compose up -d
+# Stop it:                docker compose down
+# (Your data is kept in the "keian-db-data" volume, even after you stop it.)
+
+services:
+  db:
+    image: postgres:17
+    container_name: keian-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keian
+      POSTGRES_USER: keian
+      POSTGRES_PASSWORD: keian_local   # for your computer only, not for the live site
+    ports:
+      - "5432:5432"
+    volumes:
+      - keian-db-data:/var/lib/postgresql/data
+
+volumes:
+  keian-db-data:

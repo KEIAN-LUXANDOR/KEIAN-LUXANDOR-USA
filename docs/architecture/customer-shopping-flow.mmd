@@ -1,0 +1,13 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "fontSize": "18px", "primaryColor": "#fefcf9", "primaryBorderColor": "#b8955a", "primaryTextColor": "#3d3229", "lineColor": "#b8955a", "clusterBkg": "#ffffff", "clusterBorder": "#ffffff"}}}%%
+%% Keian Luxandor — how one order happens, from browsing to delivery
+flowchart TB
+  subgraph ROW1["<b>Customer shops</b>"]
+    direction LR
+    A["<b>1. Browse</b><br/>looks at rings"] --> B["<b>2. Choose</b><br/>metal and size"] --> C["<b>3. Add to bag</b>"] --> D["<b>4. Checkout</b><br/>enters address"] --> E["<b>5. Pay</b><br/>card or PayPal"]
+  end
+  subgraph ROW2["<b>Keian delivers</b>"]
+    direction LR
+    F["<b>6. Order saved</b><br/>stock goes down"] --> G["<b>7. Email</b><br/>'Thank you for<br/>your order'"] --> H["<b>8. Shipped</b><br/>insured courier,<br/>tracking sent"] --> I(["<b>9. Delivered</b>"])
+  end
+  ROW1 --> ROW2
+  I -.->|not happy?| R["<b>Return within 15 days</b><br/>money refunded"]

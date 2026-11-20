@@ -1,0 +1,28 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "fontSize": "16px", "primaryColor": "#fefcf9", "primaryBorderColor": "#b8955a", "primaryTextColor": "#3d3229", "lineColor": "#3d3229", "clusterBkg": "#f8f4ee", "clusterBorder": "#b8955a"}}}%%
+%% Keian Luxandor — planned deployment on Microsoft Azure
+flowchart TB
+  USER(["Customers & Keian team<br/>browser · phone"]) -->|https://keianluxandor.com| FD
+
+  subgraph AZ["<b>Microsoft Azure</b> (planned)"]
+    direction TB
+    FD["<b>Azure Front Door</b><br/>CDN · SSL certificate · custom domain"]
+    SWA["<b>Azure Static Web Apps</b><br/>runs frontend/ (built files)"]
+    APPSVC["<b>Azure App Service</b> · Java 17<br/>runs backend/ Spring Boot API"]
+    PG[("<b>Azure Database for PostgreSQL</b><br/>Flexible Server")]
+    BLOB[("<b>Azure Blob Storage</b><br/>photos · videos")]
+    KV["<b>Azure Key Vault</b><br/>database password · API keys"]
+    AI["<b>Application Insights</b><br/>errors · speed · uptime"]
+    FD -->|"/ (pages)"| SWA
+    FD -->|"/api"| APPSVC
+    FD -->|images · video| BLOB
+    APPSVC -->|read / write| PG
+    APPSVC -.->|reads secrets| KV
+    APPSVC -.->|sends logs| AI
+  end
+
+  subgraph GHUB["<b>GitHub</b> — KEIAN-LUXANDOR-USA"]
+    direction LR
+    PR["Pull request → main"] --> GA["<b>GitHub Actions</b><br/>build · test · deploy"]
+  end
+  GA -->|deploy frontend/| SWA
+  GA -->|deploy backend/| APPSVC
